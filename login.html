@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortFlow - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page">
+
+    <div class="login-box">
+
+        <h1>PortFlow</h1>
+        <p class="login-subtitle">Smart Port Container Management</p>
+
+        <div id="loginPanel">
+            <h2>Welcome Back!</h2>
+            <p class="login-text">Login to access your dashboard</p>
+
+            <form id="loginForm">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="show-password">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword">Show Password</label>
+                </div>
+
+                <button type="submit" class="login-btn">Login to Dashboard</button>
+            </form>
+
+            <p class="login-text">Don't have an account? <a href="#" id="showSignup">Create Account</a></p>
+        </div>
+
+        <div id="signupPanel" hidden>
+            <h2>Create Account</h2>
+            <p class="login-text">Register to explore PortFlow</p>
+
+            <form id="signupForm">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signupName" placeholder="Enter your name" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="signupEmail" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" placeholder="Minimum 6 characters" minlength="6" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Create Account</button>
+            </form>
+
+            <p class="login-text">Already have an account? <a href="#" id="showLogin">Login</a></p>
+        </div>
+
+        <a href="index.html" class="back-home">← Back to Homepage</a>
+
+        <p class="login-footer">© 2026 PortFlow. All Rights Reserved.</p>
+
+    </div>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>

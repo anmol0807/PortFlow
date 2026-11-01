@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortFlow - Port Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <h2>PortFlow</h2>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="login.html" class="login-link">Login</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Smart Port Container Management</h1>
+            <p>
+                Manage shipping containers, vessels and yard
+                operations with one simple platform.
+            </p>
+            <a href="login.html" class="main-btn">Get Started</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>About PortFlow</h2>
+        <p>
+            PortFlow is a container management system designed
+            to simplify port operations. It helps manage
+            containers, assign vessels, track yard locations
+            and monitor container movements.
+        </p>
+    </section>
+
+    <section class="features" id="features">
+        <h2>Our Features</h2>
+
+        <div class="feature-container">
+            <div class="feature-card">
+                <h3>Container Management</h3>
+                <p>Add, view and manage shipping containers.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Vessel Management</h3>
+                <p>Manage vessels and container assignments.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Yard Management</h3>
+                <p>Manage container storage locations.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Container Tracking</h3>
+                <p>Search containers and check their status.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard" id="dashboard" hidden>
+
+        <div class="sidebar">
+            <h2>PortFlow</h2>
+
+            <a href="#dashboard">Dashboard</a>
+            <a href="#containers">Containers</a>
+            <a href="#vessels">Vessels</a>
+            <a href="#yard">Yard Management</a>
+            <a href="#tracking">Tracking</a>
+            <a href="#history">Movement History</a>
+
+            <button onclick="logout()">Logout</button>
+        </div>
+
+        <div class="dashboard-content">
+
+            <h1>Dashboard</h1>
+            <p>Welcome to PortFlow Admin Panel</p>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <h3>Total Containers</h3>
+                    <h2 id="totalContainers">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Arrived</h3>
+                    <h2 id="arrivedContainers">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h3>In Yard</h3>
+                    <h2 id="yardContainers">0</h2>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Departed</h3>
+                    <h2 id="departedContainers">0</h2>
+                </div>
+
+            </div>
+
+            <section class="management-section" id="containers">
+                <h2>Container Management</h2>
+
+                <form id="containerForm">
+                    <input type="text" id="containerId"
+                        placeholder="Container ID" required>
+
+                    <select id="containerType" required>
+                        <option value="">Select Type</option>
+                        <option>Standard</option>
+                        <option>Refrigerated</option>
+                        <option>Open Top</option>
+                    </select>
+
+                    <select id="containerSize" required>
+                        <option value="">Select Size</option>
+                        <option>20 ft</option>
+                        <option>40 ft</option>
+                    </select>
+
+                    <input type="text" id="destination"
+                        placeholder="Destination" required>
+
+                    <button type="submit">Add Container</button>
+                </form>
+
+                <input type="text" id="searchContainer"
+                    placeholder="Search Container ID">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Container ID</th>
+                            <th>Type</th>
+                            <th>Size</th>
+                            <th>Destination</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="containerTable"></tbody>
+                </table>
+            </section>
+
+            <section class="management-section" id="vessels">
+                <h2>Vessel Management</h2>
+
+                <form id="vesselForm">
+                    <input type="text" id="vesselName"
+                        placeholder="Vessel Name" required>
+
+                    <input type="text" id="vesselId"
+                        placeholder="Vessel ID" required>
+
+                    <input type="text" id="voyageNumber"
+                        placeholder="Voyage Number" required>
+
+                    <button type="submit">Add Vessel</button>
+                </form>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vessel Name</th>
+                            <th>Vessel ID</th>
+                            <th>Voyage Number</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="vesselTable"></tbody>
+                </table>
+            </section>
+
+            <section class="management-section" id="yard">
+                <h2>Yard Management</h2>
+
+                <form id="yardForm">
+                    <input type="text" id="yardContainerId"
+                        placeholder="Container ID" required>
+
+                    <input type="text" id="yardName"
+                        placeholder="Yard Name" required>
+
+                    <input type="text" id="blockNumber"
+                        placeholder="Block Number" required>
+
+                    <input type="text" id="slotNumber"
+                        placeholder="Slot Number" required>
+
+                    <button type="submit">Assign Location</button>
+                </form>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Container ID</th>
+                            <th>Yard</th>
+                            <th>Block</th>
+                            <th>Slot</th>
+                        </tr>
+                    </thead>
+                    <tbody id="yardTable"></tbody>
+                </table>
+            </section>
+
+            <section class="management-section" id="tracking">
+                <h2>Container Tracking</h2>
+
+                <input type="text" id="trackingId"
+                    placeholder="Enter Container ID">
+
+                <button type="button" onclick="trackContainer()">
+                    Track Container
+                </button>
+
+                <div id="trackingResult"></div>
+            </section>
+
+            <section class="management-section" id="history">
+                <h2>Movement History</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Container ID</th>
+                            <th>Activity</th>
+                            <th>Location</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="historyTable"></tbody>
+                </table>
+            </section>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 PortFlow | Team Web Devz</p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
